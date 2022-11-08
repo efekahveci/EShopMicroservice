@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{1C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{0D0BF9CF-BB3A-4533-8468-F95E80A8833E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YARPApiGateway", "Gateways\YARPApiGateway\YARPApiGateway.csproj", "{3674E788-CDE1-42F2-B969-E7048E75BE3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotApiGateway", "Gateways\YARPApiGateway\OcelotApiGateway.csproj", "{3674E788-CDE1-42F2-B969-E7048E75BE3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.RabbitMQ", "BuildingBlocks\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{4D789A47-4A4E-4961-9947-CA2645151F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "BuildingBlocks\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{4D789A47-4A4E-4961-9947-CA2645151F02}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{EF5B5421-36FE-4AA6-9277-6C098EF90755}"
 EndProject
@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{95E8A7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{84E2F0D7-EA65-4F1D-BD21-89C078B10C32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket.API\Basket.API.csproj", "{DB65A94C-11FD-4959-A193-585F57F6C0C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket.API\Basket.API.csproj", "{DB65A94C-11FD-4959-A193-585F57F6C0C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Services\Catalog.API\Catalog.API.csproj", "{8D607871-E3B9-4335-B863-B2715AF2FAAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Services\Catalog.API\Catalog.API.csproj", "{8D607871-E3B9-4335-B863-B2715AF2FAAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.API", "Services\Order.API\Order.API.csproj", "{C9A7F70D-6357-457C-ABF8-EE7F0772A6F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.API", "Services\Order.API\Order.API.csproj", "{C9A7F70D-6357-457C-ABF8-EE7F0772A6F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Application", "Services\Order.Application\Order.Application.csproj", "{8B98D95B-B7AE-4040-A7B6-E487AC02A3A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Application", "Services\Order.Application\Order.Application.csproj", "{8B98D95B-B7AE-4040-A7B6-E487AC02A3A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Domain", "Services\Order.Domain\Order.Domain.csproj", "{2DECF27D-7D15-4F08-8488-88271EEE1F0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Domain", "Services\Order.Domain\Order.Domain.csproj", "{2DECF27D-7D15-4F08-8488-88271EEE1F0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Infrastructure", "Services\Order.Infrastructure\Order.Infrastructure.csproj", "{D305142D-5277-4900-92F3-79983554BBB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Infrastructure", "Services\Order.Infrastructure\Order.Infrastructure.csproj", "{D305142D-5277-4900-92F3-79983554BBB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
