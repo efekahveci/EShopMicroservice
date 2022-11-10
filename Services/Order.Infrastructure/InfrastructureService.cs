@@ -10,12 +10,13 @@ using Order.Infrastructure.Repositories;
 
 namespace Order.Infrastructure;
 
-public static class InfrastructureServiceRegistration
+public static class InfrastructureService
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection InfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<OrderContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString")));
+            options.UseNpgsql(configuration.GetConnectionString("OrderingConnectionString")));
+
 
         services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
         services.AddScoped<IOrderRepository, OrderRepository>();

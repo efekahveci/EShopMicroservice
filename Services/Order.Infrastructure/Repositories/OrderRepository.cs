@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Order.Application.Contracts.Persistence;
 using Order.Domain.Entities;
 using Order.Infrastructure.Persistence;
 

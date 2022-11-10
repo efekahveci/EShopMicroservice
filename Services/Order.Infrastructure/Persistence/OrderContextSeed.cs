@@ -15,11 +15,10 @@ public class OrderContextSeed
         }
     }
 
-    private static IEnumerable<OrderModel> GetPreconfiguredOrders()
-    {
+    private static IEnumerable<OrderModel> GetPreconfiguredOrders() {
         return new List<OrderModel>
-        {
-            new OrderModel() {UserName = "swn", FirstName = "Mehmet", LastName = "Ozkaya", EmailAddress = "ezozkme@gmail.com", AddressLine = "Bahcelievler", Country = "Turkey", TotalPrice = 350 }
-        };
+            {
+                new OrderModel() {UserName = "efekahveci", FirstName = "Efe", LastName = "Kahveci", EmailAddress = "efekhvci3@gmail.com", AddressLine = "Bahcelievler", Country = "Turkey", TotalPrice = 350 }
+            };
     }
 }

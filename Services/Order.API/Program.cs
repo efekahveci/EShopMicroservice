@@ -1,5 +1,6 @@
 using EventBus.RabbitMQ.Common;
 using MassTransit;
+using Microsoft.OpenApi.Models;
 using Order.API.EventBusConsumer;
 using Order.Application;
 using Order.Infrastructure;
@@ -8,8 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.ApplicationServices();
+builder.Services.InfrastructureServices(builder.Configuration);
+
 
 // MassTransit-RabbitMQ Configuration
 builder.Services.AddMassTransit(config =>
@@ -37,7 +39,14 @@ builder.Services.AddScoped<BasketCheckoutConsumer>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ordering.API", Version = "v1" });
+});
+
+
+
+
 
 var app = builder.Build();
 
@@ -47,6 +56,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseHttpsRedirection();
 

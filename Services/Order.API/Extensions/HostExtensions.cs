@@ -1,7 +1,4 @@
 ﻿
-
-
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Order.API.Extensions;
@@ -28,7 +25,7 @@ public static class HostExtensions
 
                 logger.LogInformation("Migrated database associated with context {DbContextName}", typeof(TContext).Name);
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 logger.LogError(ex, "An error occurred while migrating the database used on context {DbContextName}", typeof(TContext).Name);
 

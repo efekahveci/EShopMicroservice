@@ -2,6 +2,7 @@
 using Catalog.API.Entities;
 using Catalog.API.Repositories.Contract;
 using MongoDB.Driver;
+using System.Linq.Expressions;
 
 namespace Catalog.API.Repositories.Implementation
 {

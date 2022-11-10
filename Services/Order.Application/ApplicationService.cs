@@ -6,9 +6,9 @@ using System.Reflection;
 
 namespace Order.Application;
 
-public static class ApplicationServiceRegistration
+public static class ApplicationService
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection ApplicationServices(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

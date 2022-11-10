@@ -37,7 +37,7 @@ public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand,
 
     private async Task SendMail(OrderModel order)
     {
-        var email = new Email() { To = "ezozkme@gmail.com", Body = $"Order was created.", Subject = "Order was created" };
+        var email = new Email() { To = "efekhvci3@gmail.com", Body = $"Order was created.", Subject = "Order was created" };
 
         try
         {
