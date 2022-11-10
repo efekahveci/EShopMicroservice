@@ -1,6 +1,7 @@
 ﻿using Catalog.API.Entities;
 using Catalog.API.Repositories.Contract;
 using Microsoft.AspNetCore.Mvc;
+using Nest;
 using System.Net;
 
 namespace Catalog.API.Controllers;
@@ -10,10 +11,25 @@ namespace Catalog.API.Controllers;
 public class CatalogController : ControllerBase
 {
     private readonly IProductRepository _repository;
+    private readonly ElasticClient _client;
 
-    public CatalogController(IProductRepository repository)
+    public CatalogController(IProductRepository repository, ElasticClient client)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        _client = client ?? throw new ArgumentNullException(nameof(client));    
+    }
+
+    [HttpGet("Elastic")]
+
+    public IActionResult Index()
+    {
+        var results = _client.Search<Product>(s => s
+            .Query(q => q
+                .MatchAll()
+            )
+        );
+
+        return Ok(results);
     }
 
     [HttpGet]

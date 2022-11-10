@@ -1,7 +1,10 @@
 using Catalog.API.Data;
 using Catalog.API.Repositories.Contract;
 using Catalog.API.Repositories.Implementation;
+using Elasticsearch.Net;
 using Microsoft.OpenApi.Models;
+using Nest;
+using static System.Reflection.Metadata.BlobBuilder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,15 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddScoped<ICatalogContext, CatalogContext>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+
+var pool = new SingleNodeConnectionPool(new Uri("http://localhost:9200"));
+var settings = new ConnectionSettings(pool)
+    .DefaultIndex("orders");
+var client = new ElasticClient(settings);
+builder.Services.AddSingleton(client);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
