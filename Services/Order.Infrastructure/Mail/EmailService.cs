@@ -1,46 +1,38 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+﻿
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.Extensions.Configuration;
+using MimeKit;
+using MimeKit.Text;
 using Order.Application.Contracts.Infrastructure;
 using Order.Application.Models;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 
 namespace Order.Infrastructure.Mail;
 
 public class EmailService : IEmailService
 {
-    public EmailSettings _emailSettings { get; }
-    public ILogger<EmailService> _logger { get; }
+    private readonly IConfiguration _config;
 
-    public EmailService(IOptions<EmailSettings> emailSettings, ILogger<EmailService> logger)
+    public EmailService(IConfiguration config)
     {
-        _emailSettings = emailSettings.Value;
-        _logger = logger;
+        _config = config;
     }
 
-    public async Task<bool> SendEmail(Email email)
+
+    public Task<bool> SendEmail(Email request)
     {
-        var client = new SendGridClient(_emailSettings.ApiKey);
+        var email = new MimeMessage();
+        email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
+        email.To.Add(MailboxAddress.Parse(request.To));
+        email.Subject = request.Subject;
+        email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
 
-        var subject = email.Subject;
-        var to = new EmailAddress(email.To);
-        var emailBody = email.Body;
+        using var smtp = new SmtpClient();
+        smtp.Connect(_config.GetSection("EmailHost").Value, Convert.ToInt32(_config.GetSection("EmailPort").Value), SecureSocketOptions.StartTls);
+        smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+        smtp.Send(email);
+        smtp.Disconnect(true);
 
-        var from = new EmailAddress
-        {
-            Email = _emailSettings.FromAddress,
-            Name = _emailSettings.FromName
-        };
-
-        var sendGridMessage = MailHelper.CreateSingleEmail(from, to, subject, emailBody, emailBody);
-        var response = await client.SendEmailAsync(sendGridMessage);
-
-        _logger.LogInformation("Email sent.");
-
-        if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.OK)
-            return true;
-
-        _logger.LogError("Email sending failed.");
-        return false;
+        return Task.FromResult(true);
     }
 }

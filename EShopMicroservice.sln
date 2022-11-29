@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{1C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{0D0BF9CF-BB3A-4533-8468-F95E80A8833E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotApiGateway", "Gateways\YARPApiGateway\OcelotApiGateway.csproj", "{3674E788-CDE1-42F2-B969-E7048E75BE3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YARPApiGateway", "Gateways\YARPApiGateway\YARPApiGateway.csproj", "{3674E788-CDE1-42F2-B969-E7048E75BE3C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "BuildingBlocks\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{4D789A47-4A4E-4961-9947-CA2645151F02}"
 EndProject

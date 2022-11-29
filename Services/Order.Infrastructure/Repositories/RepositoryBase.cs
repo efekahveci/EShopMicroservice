@@ -2,7 +2,6 @@
 using Order.Application.Contracts.Persistence;
 using Order.Domain.Common;
 using Order.Infrastructure.Persistence;
-using SendGrid.Helpers.Mail;
 using System.Linq.Expressions;
 
 namespace Order.Infrastructure.Repositories;
