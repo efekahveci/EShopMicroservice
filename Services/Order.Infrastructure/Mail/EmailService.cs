@@ -11,25 +11,42 @@ namespace Order.Infrastructure.Mail;
 
 public class EmailService : IEmailService
 {
-    private readonly IConfiguration _config;
+    private readonly EmailSettings _config;
 
-    public EmailService(IConfiguration config)
+    public EmailService(EmailSettings email)
     {
-        _config = config;
+        _config = email;
     }
 
+
+    //public Task<bool> SendEmail(Email request)
+    //{
+    //    var email = new MimeMessage();
+    //    email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
+    //    email.To.Add(MailboxAddress.Parse(request.To));
+    //    email.Subject = request.Subject;
+    //    email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
+
+    //    using var smtp = new SmtpClient();
+    //    smtp.Connect(_config.GetSection("EmailHost").Value, Convert.ToInt32(_config.GetSection("EmailPort").Value), SecureSocketOptions.StartTls);
+    //    smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+    //    smtp.Send(email);
+    //    smtp.Disconnect(true);
+
+    //    return Task.FromResult(true);
+    //}
 
     public Task<bool> SendEmail(Email request)
     {
         var email = new MimeMessage();
-        email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
+        email.From.Add(MailboxAddress.Parse(_config.EmailUsername));
         email.To.Add(MailboxAddress.Parse(request.To));
         email.Subject = request.Subject;
         email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
 
         using var smtp = new SmtpClient();
-        smtp.Connect(_config.GetSection("EmailHost").Value, Convert.ToInt32(_config.GetSection("EmailPort").Value), SecureSocketOptions.StartTls);
-        smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+        smtp.Connect(_config.EmailHost, _config.EmailPort, SecureSocketOptions.StartTls);
+        smtp.Authenticate(_config.EmailUsername, _config.EmailPassword);
         smtp.Send(email);
         smtp.Disconnect(true);
 

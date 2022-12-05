@@ -2,9 +2,9 @@
 
 public class EmailSettings
 {
-    public string EmailPassword { get; set; }
-    public string EmailUsername { get; set; }
-    public int EmailPort { get; set; }
-    public string EmailHost { get; set; }
+    public string EmailPassword { get; }
+    public string EmailUsername { get; }
+    public int EmailPort { get; }
+    public string EmailHost { get; }
 
 }

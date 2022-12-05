@@ -3,7 +3,9 @@ using MassTransit;
 using Microsoft.OpenApi.Models;
 using Order.API.EventBusConsumer;
 using Order.Application;
+using Order.Application.Models;
 using Order.Infrastructure;
+using Order.Infrastructure.Mail;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,7 +59,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    var efe = scope.ServiceProvider.GetService(typeof(EmailSettings)) as EmailSettings;
 
+    var service = new EmailService(efe);
+
+
+}
 
 app.UseHttpsRedirection();
 
